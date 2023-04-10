@@ -24,6 +24,7 @@ pipeline {
         }
         stage('Docker Build') {
             steps {
+	        sh 'find .'
                 sh 'docker build -t springboot_hello:latest .'
             }
        }
