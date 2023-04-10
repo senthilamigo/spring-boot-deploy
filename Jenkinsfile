@@ -19,12 +19,14 @@ pipeline {
          stage('Build') {
             steps {
                 sh 'mvn --version'
-                //sh 'cd spring-boot-2-rest-service-basic'
-                sh 'find .'
-                //sh 'cd spring-boot-2-rest-service-basic; mvn clean install'
                 sh 'mvn clean install'
             }
         }
+        stage('Docker Build') {
+            steps {
+                sh 'docker build -t springboot_hello:latest .'
+            }
+       }
     }
     post {
         always {
