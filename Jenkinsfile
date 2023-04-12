@@ -25,7 +25,7 @@ pipeline {
          stage('Scan') {
             steps {
                  withSonarQubeEnv(installationName: 'Sonar1') {
-                     sh 'mvn clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1:sonar'
+                     sh 'mvn clean sonar:sonar'
                  }
             }
         }
