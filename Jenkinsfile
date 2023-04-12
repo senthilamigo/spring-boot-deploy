@@ -22,6 +22,13 @@ pipeline {
                 sh 'mvn clean install'
             }
         }
+         stage('Scan') {
+            steps {
+                 withSonarQubeEnv(installationName: 'Sonar1') {
+                     sh 'mvn clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1:sonar'
+                 }
+            }
+        }
         stage('Docker Build') {
             steps {
 	        sh 'find .'
