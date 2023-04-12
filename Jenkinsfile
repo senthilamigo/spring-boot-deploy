@@ -25,7 +25,7 @@ pipeline {
          stage('Scan') {
             steps {
                  withSonarQubeEnv(installationName: 'Sonar1') {
-                     sh 'mvn clean sonar:sonar -Dsonar.projectKey=groupId:artifactId -Dsonar.host.url=http://172.23.16.1:9000 -Dsonar.login=loginHASH -Dsonar.sources=src/main/java/ -Dsonar.java.binaries=target/classes -Dsonar.login=admin -Dsonar.password=sonar123'
+                     sh 'mvn sonar:sonar -Dsonar.projectKey=groupId:artifactId -Dsonar.host.url=http://172.23.16.1:9000 -Dsonar.login=loginHASH -Dsonar.sources=src/main/java/ -Dsonar.java.binaries=target/classes -Dsonar.login=admin -Dsonar.password=sonar123'
                  }
             }
         }
